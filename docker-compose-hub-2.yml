@@ -1,0 +1,44 @@
+version: "3.7"
+
+services:
+  backend:
+    container_name: backend
+    image: "rijulsaini/backend-test:version2"
+    volumes:
+      - ./backend:/app/backend
+    ports:
+      - "8000:8000"
+    stdin_open: true
+    tty: true
+    environment:
+      - DJANGO_SETTINGS_MODULE=modbud.settings.dev
+
+  frontend:
+    container_name: frontend   
+    image: "rijulsaini/frontend-test:version2"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    command: npm start
+
+  rasa:
+    image: "rijulsaini/rasa-test:version2"
+    ports:
+      - 5005:5005
+    volumes:
+      - ./rasa:/app
+      
+  action-server:
+    image: "rijulsaini/rasa-action-test:version2"
+    volumes:
+      - ./rasa/actions:/app/actions
+      - ./backend/myResults/traceData:/app/backend/myResults/traceData
+    ports:
+      - 5055:5055
+
+
