@@ -5,6 +5,9 @@
 * [3. Repository Contents](#repo)
 * [4. Installation Guide](#installation)
 * [5. Experiment Replication Guide](#experiment)
+  * [(i) Evaluation of our approach (without learning strategy)](#activity1)
+  * [(ii) Evaluation of our approach (with learning strategy)](#activity2)
+  * [(iii) Comparison of performances](#activity3)
 * [6. Contributors](#contributors)
 
 
@@ -12,7 +15,7 @@
 
 In our paper, we present a bot-assisted approach to allow modellers to perform domain modelling quickly and interactively. Furthermore, the approach uses an incremental learning strategy empowered by Machine Learning (ML) to improve the accuracy of the bot’s suggestions and extracted domain models by analyzing practitioners’ decisions over time. We build a prototype of our approach in the form of a domain modelling bot. The architecture of the bot is based on four micro-services to enable automated and interactive domain modelling with incremental learning. First, we use a React-based frontend that provides a web-based interface to allow modellers to enter problem descriptions in natural language, as well as interact with the extracted models. Second, we use a Django-based backend to extract domain models from problem descriptions using Natural Language Processing (NLP) and ML techniques. Third, we use a conversational agent empowered by RASA to provide suggestions to modellers and collect their decisions. Finally, we use an action server empowered by RASA to make proactive changes in the extracted models based on the modeller's decisions. Finally, to facilitate the evaluation of our bot, we use Docker Compose to configure and start multiple Docker containers for the four microservices on the same host. Furthermore, based on the focus of our approach in the paper, we organize the evaluation tasks into three activities -- (a) evaluating domain models extracted from our approach without incremental learning, (b) evaluating domain models extracted from our approach with incremental learning, and (c) comparison of the results obtained from the first two activities (a and b).
 
-We provide all the necessary artifacts and documentation on our [GitHub page](https://github.com/Rijul5/bot-artifact-evaluation-22). 
+We provide all the necessary artifacts and documentation on our [GitHub page](https://github.com/Rijul5/bot-artifact-evaluation-22). This repository is open and public.
 
 
 ## 2. <a name="system-requirements"></a>SYSTEM REQUIREMENTS
@@ -49,7 +52,7 @@ docker-compose -f docker-compose-hub-1.yml up --build
 
 Based on our approach and its evaluation in the paper, we organize the experiment replication tasks into three activities. As the experiment involves the use of ML models, the outcomes may differ every time these activities are performed. Therefore, we focus on the relative comparison of performances of our approach across these activities rather than the absolute comparison. Moreover, the evaluators mimic the role of a modeller while performing these activities as we explain in the below steps. 
 
-## (i). Evaluation of our approach (without learning strategy)
+### __(i) <a name="activity1"></a>Evaluation of our approach (without learning strategy)__
 
   * First, we run the containers using __docker-compose-hub-1.yml__ with the below command and launch the bot in a browser using the link __http://localhost:3000/__.
 
@@ -81,7 +84,7 @@ Based on our approach and its evaluation in the paper, we organize the experimen
     
    > **_Note:_**  If the modeller now again extracts the domain model for _problem description PD1_ after refreshing the page in the browser and clearing the memory of trace models for previous domain problems (if any) by clicking the _Clear Problem Stack_ button, then the extracted domain model should already have some or all the configurations same as _Expected Configuration_. This is due to the incremental learning performed by the bot online. 
 
-## (ii). Evaluation of our approach (with learning strategy)
+### __(ii) <a name="activity2"></a>Evaluation of our approach (with learning strategy)__
 
 As it is time-consuming and labor-intensive to re-train and package the new version of models obtained from _Activity 1_, we create __docker-compose-hub-2.yml__ file that builds and starts the containers which are associated with the trained version of models that we obtain from _Activity 1_ in real-time. A modeller performs the below steps for _Activity 2_.
 
@@ -100,17 +103,38 @@ As it is time-consuming and labor-intensive to re-train and package the new vers
   * Fifth,  as shown in Table 1, the modeller changes the two decision points if the _Current Configurations_ (generated solutions) are not the same as the _Expected Configurations_. Also, the modeller counts the manual steps required to perform these modifications (bringing the state of extracted domain model closer to the expected state). We call these manual steps, __MS2__. As shown in Table 1, there are multiple possible actions which could be performed. The bot considers each modeller's action and presents the other alternative configurations (bot's suggestions) which closely match the modeller’s actions (based on weighted steps). A modeller then accepts one of the configurations from the bot's suggestions. The accepted configuration represents modeller's preference for a configuration among possible configurations to model a scenario in domain modelling. Finally, the bot proactively updates the whole decision point (domain model) with the configuration selected by the modeller. 
 
 
-## (iii). Comparison of performances
+### __(iii) <a name="activity3"></a>Comparison of performances__
 In this activity, we compare the results obtained from _Activity 1_ and _Activity 2_.
 
 * First, we compare the accuracy of extracted domain models obtained from _Activity 1_  and _Activity 2_. As we use different weights of underlying models (version in _Activity 1_ and version in _Activity 2_), there should be some differences in their accuracy. The expected outcome: __AC1__ < __AC2__
 
 * Second, we compare __MS1__ and __MS2__. The expected outcome: __MS1__ > __MS2__
-    
 
 
+## 6. <a name="technical-details"></a>TECHNICAL DETAILS
+The architecture of the bot is based on four micro-services to enable automated and interactive domain modelling with incremental learning. We build a separate Docker image for each service. These images are further used by the two Docker Compose files. In this section, we provide more technical details about these Docker images. Also, we provide system/environment settings where our approach was successfully evaluated.
 
-## 6. <a name="contributors"></a>CONTRIBUTORS
+### __(i) <a name="docker-images"></a>Docker Images__
+We now provide details about the libraries/frameworks used and their respective versions for each Docker image.
+
+| Microservice       | Image Name | Image Location| Base Image | Underlying Libraries/Frameworks (with version details) | 
+| ------------       | ----------- |----------- |----------- |----------- |
+| Frontend           | frontend-test | [rijulsaini/frontend-test](https://hub.docker.com/repository/docker/rijulsaini/frontend-test) | node:14.17.5-alpine | [package.json]()|
+| Backend            | backend-test  | [rijulsaini/backend-test](https://hub.docker.com/repository/docker/rijulsaini/backend-test) | python:3.8-slim-buster | [backend-requirements.txt]() |
+| RASA               | rasa-test     | [rijulsaini/rasa-test](https://hub.docker.com/repository/docker/rijulsaini/rasa-test) | rasa/rasa:3.1.0 | [rasa-requirements.txt]()  | 
+| RASA Action Server | rasa-action-test | [rijulsaini/rasa-action-test] (https://hub.docker.com/repository/docker/rijulsaini/rasa-action-test) | rasa/rasa-sdk:3.1.1 | [rasa-action-requirements.txt]() |
+
+### __(ii) <a name="docker-images"></a>Original Environment Settings__
+
+| Category    | Specification |
+| ----------- | ----------- |
+| Machine      | ThinkPad T470 laptop       |
+| Operating System   | Ubuntu (20.04.2 LTS)  |
+| RAM      | 20Gb       |
+| Processor   | Intel i7 processor 2.70GHz   |
+
+
+## 7. <a name="contributors"></a>CONTRIBUTORS
 -----------
 
  * __[Rijul Saini](http://www.ece.mcgill.ca/~rsaini6/)__ _rijul.saini@mail.mcgill.ca_
