@@ -8,7 +8,10 @@
   * [(i) Evaluation of our approach (without learning strategy)](#activity1)
   * [(ii) Evaluation of our approach (with learning strategy)](#activity2)
   * [(iii) Comparison of performances](#activity3)
-* [6. Contributors](#contributors)
+* [6. Technical Details](#technical-details)
+  * [(i) Docker Images](#docker-images)
+  * [(ii) Original Environment Settings](#environment)
+* [7. Contributors](#contributors)
 
 
 ## 1. <a name="introduction"></a>INTRODUCTION
@@ -119,12 +122,12 @@ We now provide details about the libraries/frameworks used and their respective 
 
 | Microservice       | Image Name | Image Location| Base Image | Underlying Libraries/Frameworks (with version details) | 
 | ------------       | ----------- |----------- |----------- |----------- |
-| Frontend           | frontend-test | [rijulsaini/frontend-test](https://hub.docker.com/repository/docker/rijulsaini/frontend-test) | node:14.17.5-alpine | [package.json]()|
-| Backend            | backend-test  | [rijulsaini/backend-test](https://hub.docker.com/repository/docker/rijulsaini/backend-test) | python:3.8-slim-buster | [backend-requirements.txt]() |
-| RASA               | rasa-test     | [rijulsaini/rasa-test](https://hub.docker.com/repository/docker/rijulsaini/rasa-test) | rasa/rasa:3.1.0 | [rasa-requirements.txt]()  | 
-| RASA Action Server | rasa-action-test | [rijulsaini/rasa-action-test] (https://hub.docker.com/repository/docker/rijulsaini/rasa-action-test) | rasa/rasa-sdk:3.1.1 | [rasa-action-requirements.txt]() |
+| Frontend           | frontend-test | [rijulsaini/frontend-test](https://hub.docker.com/repository/docker/rijulsaini/frontend-test) | node:14.17.5-alpine | [package.json](https://github.com/Rijul5/bot-artifact-evaluation-22/blob/main/image-dependencies/package.json)|
+| Backend            | backend-test  | [rijulsaini/backend-test](https://hub.docker.com/repository/docker/rijulsaini/backend-test) | python:3.8-slim-buster | [backend-requirements.txt](https://github.com/Rijul5/bot-artifact-evaluation-22/blob/main/image-dependencies/backend-requirements.txt) |
+| RASA               | rasa-test     | [rijulsaini/rasa-test](https://hub.docker.com/repository/docker/rijulsaini/rasa-test) | rasa/rasa:3.1.0 | [rasa-requirements.txt](https://github.com/Rijul5/bot-artifact-evaluation-22/blob/main/image-dependencies/rasa-requirements.txt)  | 
+| RASA Action Server | rasa-action-test | [rijulsaini/rasa-action-test](https://hub.docker.com/repository/docker/rijulsaini/rasa-action-test) | rasa/rasa-sdk:3.1.1 | [rasa-action-requirements.txt](https://github.com/Rijul5/bot-artifact-evaluation-22/blob/main/image-dependencies/rasa-action-requirements.txt) |
 
-### __(ii) <a name="docker-images"></a>Original Environment Settings__
+### __(ii) <a name="environment"></a>Original Environment Settings__
 
 | Category    | Specification |
 | ----------- | ----------- |
