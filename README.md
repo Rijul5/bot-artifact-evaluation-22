@@ -145,7 +145,7 @@ Finally, the third activity analyzes the results of first and second activities.
 
 
 ## 6. <a name="technical-details"></a>TECHNICAL DETAILS
-The architecture of the bot is based on four micro-services to enable automated and interactive domain modelling with incremental learning. We build a separate Docker image for each service. These images are further used by the two Docker Compose files. In this section, we provide more technical details about these Docker images. Also, we provide system/environment settings where our approach was successfully evaluated.
+The architecture of the bot is based on four micro-services to enable automated and interactive domain modelling with incremental learning. We build a separate Docker image for each service. We host these Docker images on Docker hub and maintain their versions. If we release a new version then we can simple update the Docker Compose file in this repository. Moreover, the bugs and new features related to the docker images can be maintained in this repository. In this section, we provide more technical details about these Docker images. Also, we provide system/environment settings where our approach was successfully evaluated.
 
 ### __6.1 <a name="docker-images"></a>Docker Images__
 We now provide details about the libraries/frameworks used and their respective versions for each Docker image.
