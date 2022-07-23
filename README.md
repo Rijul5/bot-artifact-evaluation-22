@@ -101,7 +101,7 @@ In addition, we evaluate extracted domain model for a given problem desciption w
   * (f) Modeller changes the two decision points as mentioned below if the _Current Configurations_ (generated solutions) are not the same as the _Expected Configurations_ (See Table 1). Also, the modeller counts the manual steps required to perform these modifications (bringing the state of extracted domain model closer to the expected state). We call these manual steps, __MS1__. As shown in Table 1, there are multiple possible actions which could be performed. The bot considers each modeller's action and presents the other alternative configurations (bot's suggestions) which closely match the modeller’s actions (based on weighted steps). A modeller then accepts one of the configurations from the bot's suggestions. The accepted configuration represent modeller's preference for a configuration among possible configurations to model a scenario in domain modelling. Finally, the bot proactively updates the decision point (domain model) with the configuration selected by the modeller. 
 
   
-  **Table 1: Required Modifications in Configurations**
+  **Table 1: Required Modifications in Extracted Domain Models**
 
 
 | Number 	|                      Decision Point                      	| Expected Configuration 	| Current Configuration 	|                                                                                                        Possible Actions (in Extracted Domain Model)                                                                                                        	|
@@ -139,7 +139,7 @@ Finally, the third activity analyzes the results of first and second activities.
 
 * (a) We analyze the F2 scores of responses from the first activity. _The expected outcome : __F2-r1__, __F2-r2__, and __F2-r3__ (in percentage) > 85%._
 
-* (b) We compare the accuracy of extracted domain models obtained from first and second activities. As we use different weights of underlying models (version in _Activity 1_ and version in _Activity 2_), there should be some differences in their F2 scores. _The expected outcome: __F2-score-a1__ < __F2-score-a2__._
+* (b) We compare the accuracy of extracted domain models obtained from first and second activities. As we use different weights of underlying models (version in _Activity 1_ and version in _Activity 2_), there should be some differences (possibly improvement) in their F2 scores. _The expected outcome: __F2-score-a1__ <= __F2-score-a2__._
 
 * (c) We compare __MS1__ and __MS2__ from first and second activities. The first activity uses our approach without learning strategy. In contrast, the second activity uses our approach with learning strategy. This learning strategy enables the bot to learn modeller's preferences and present configurations based on modeller's preferences.  _The expected outcome: __MS1__ > __MS2__._
 
