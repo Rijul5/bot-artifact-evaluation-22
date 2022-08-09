@@ -6,6 +6,9 @@ services:
     image: "rijulsaini/backend-test:version2"
     volumes:
       - ./backend:/backend/app
+      - type: volume
+        source: traceData
+        target: /app/backend/myResults/traceData
     ports:
       - "8000:8000"
     stdin_open: true
@@ -26,7 +29,7 @@ services:
     command: npm start
 
   rasa:
-    container_name: rasa 
+    container_name: rasa
     image: "rijulsaini/rasa-test:version2"
     ports:
       - 5005:5005
@@ -38,6 +41,11 @@ services:
     image: "rijulsaini/rasa-action-test:version2"
     volumes:
       - ./rasa/actions:/rasa/app/actions
-      - ./backend/myResults/traceData:/app/backend/myResults/traceData
+      - type: volume
+        source: traceData
+        target: /app/backend/myResults/traceData
     ports:
       - 5055:5055
+
+volumes:
+  traceData:
