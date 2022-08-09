@@ -66,6 +66,12 @@ docker-compose -f docker-compose-hub-1.yml up --build
 ```
 4. Open a browser and use the link __http://localhost:3000/__ to launch our web-based tool (bot).
 
+5. As the services in the Docker Compose file take time to start (depending upon the configuration of the host machine), please wait until the last service has started. The last service in the Docker Compose file is rasa-action-server. Therefore, wait until you get blue-colored text/chat icon in bottom left corner of the screen as shown below. The appearance of this icon indicates that all services have been up/activated now. 
+
+<img src="https://github.com/Rijul5/bot-artifact-evaluation-22/blob/main/troubleshooting/images/tool.PNG?raw=true" width="800" alt="Bot screenshot in browser">
+
+
+
 
 
 ## 5. <a name="experiment"></a>EXPERIMENT REPLICATION GUIDE

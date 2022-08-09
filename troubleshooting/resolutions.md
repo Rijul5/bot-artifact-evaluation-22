@@ -2,18 +2,24 @@
 
 ## Issue replication
 
-![Error 1](https://github.com/Rijul5/bot-artifact-evaluation-22/blob/main/troubleshooting/images/issue1.png?raw=true)
-
-![Error 2](https://github.com/Rijul5/bot-artifact-evaluation-22/blob/main/troubleshooting/images/issue2.png?raw=true)
+<img src="https://github.com/Rijul5/bot-artifact-evaluation-22/blob/main/troubleshooting/images/issue1.png?raw=true" width="800" alt="Error 1">
 
 
-## Removing the old containers and images
+<img src="https://github.com/Rijul5/bot-artifact-evaluation-22/blob/main/troubleshooting/images/issue2.png?raw=true" width="800" alt="Error 2">
 
-![clearing old containers](https://github.com/Rijul5/bot-artifact-evaluation-22/blob/main/troubleshooting/images/clear.png?raw=true)
+
+## Removing the old containers, volumes, and images
+
+<img src="https://github.com/Rijul5/bot-artifact-evaluation-22/blob/main/troubleshooting/images/steps.png?raw=true" width="800" alt="clearing old containers">
+
 
 
 ## After using the updated Docker Compose files
 
-![expected output](https://github.com/Rijul5/bot-artifact-evaluation-22/blob/main/troubleshooting/images/resolution.png?raw=true)
+<img src="https://github.com/Rijul5/bot-artifact-evaluation-22/blob/main/troubleshooting/images/resolution0.png?raw=true" width="800" alt="expected output">
+
+<img src="https://github.com/Rijul5/bot-artifact-evaluation-22/blob/main/troubleshooting/images/resolution1.png?raw=true" width="800" alt="expected output">
+
+<img src="https://github.com/Rijul5/bot-artifact-evaluation-22/blob/main/troubleshooting/images/tool.PNG?raw=true" width="800" alt="Bot screenshot in browser">
 
 
