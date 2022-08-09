@@ -5,7 +5,7 @@ services:
     container_name: backend
     image: "rijulsaini/backend-test:version2"
     volumes:
-      - ./backend:/app/backend
+      - ./backend:/backend/app
     ports:
       - "8000:8000"
     stdin_open: true
@@ -17,8 +17,7 @@ services:
     container_name: frontend   
     image: "rijulsaini/frontend-test:version2"
     volumes:
-      - ./frontend:/app
-      - /app/node_modules
+      - ./frontend:/frontend/app
     ports:
       - "3000:3000"
     environment:
@@ -27,18 +26,18 @@ services:
     command: npm start
 
   rasa:
+    container_name: rasa 
     image: "rijulsaini/rasa-test:version2"
     ports:
       - 5005:5005
     volumes:
-      - ./rasa:/app
+      - ./rasa:/rasa/app
       
   action-server:
+    container_name: action-server
     image: "rijulsaini/rasa-action-test:version2"
     volumes:
-      - ./rasa/actions:/app/actions
+      - ./rasa/actions:/rasa/app/actions
       - ./backend/myResults/traceData:/app/backend/myResults/traceData
     ports:
       - 5055:5055
-
-
